@@ -253,8 +253,16 @@ messageNotFound.style.cssText = `
 // Message not a country
 const messageNotCountry = document.createElement("span");
 messageNotCountry.classList.add("message-not-country");
-messageNotCountry.innerHTML = `The country you looking for is not found. Do you mean <a href="#">palatine</a>?`;
+messageNotCountry.innerHTML = `The country you looking for is not found. Do you mean <a href="#">Palestine, State of</a>?`;
 
+
+
+
+messageNotCountry.addEventListener('click', () => {
+  console.log(messageNotCountry.children[0].textContent);
+  localStorage.setItem('name-country', messageNotCountry.children[0].textContent)
+  location.href = 'country-info.html'
+})
 
 
 

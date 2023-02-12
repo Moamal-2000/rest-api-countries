@@ -15,9 +15,6 @@ const websiteIconTag = document.querySelector(".website-icon"),
 
 
 
-// Fix issue [Uncaught ReferenceError: browser is not defined]
-if (typeof browser === "undefined") var browser = chrome;
-
 
 darkModeIconOff.className = "fa-solid fa-moon";
 darkModeIconOn.className = "fa-regular fa-moon";
