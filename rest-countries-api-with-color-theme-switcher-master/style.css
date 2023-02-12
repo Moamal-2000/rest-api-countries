@@ -1,0 +1,344 @@
+/* Global [Start] */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-size: 14px;
+  font-family: 'Nunito Sans', sans-serif;
+  background-color: var(--background);
+  color: var(--text);
+}
+
+:root {
+
+  --background: #f7f7f7;
+  /*light mode background*/
+  --text: #111517;
+  /*Light mode text*/
+  --element-background: #ffffff;
+
+
+
+
+
+  --background-dark: #202c37;
+  /*Dark mode background*/
+  --light2: #ffffff;
+  /*Dark Mode Text & Light Mode Elements*/
+  --dark-blue: #2b3945;
+  /*Dark mode elements*/
+  --dark-gray: #858585;
+  /*light mode input*/
+}
+
+.container {
+  margin: 0 auto;
+  width: 90%;
+}
+
+::placeholder {
+  color: var(--text);
+}
+
+.message-not-country {
+  font-size: 16px;
+  font-weight: bold;
+  line-height: 1.7;
+}
+
+.message-not-country a {
+  color: var(--text);
+  transition: 0.3s;
+  -webkit-transition: 0.3s;
+  -moz-transition: 0.3s;
+  -ms-transition: 0.3s;
+  -o-transition: 0.3s;
+}
+
+.message-not-country a:hover {
+  color: var(--text);
+  opacity: 0.7;
+}
+
+/* Global [End] */
+
+
+
+
+
+
+/* Header [Start] */
+header {
+  box-shadow: 0 -5px 8px 0 #000;
+  background-color: var(--element-background);
+}
+
+header .container {
+  padding: 18px 0;
+  display: flex;
+  justify-content: space-between;
+}
+
+header h1 {
+  font-size: 20px;
+}
+
+header .dark-light-mode {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 94px;
+  user-select: none;
+  cursor: pointer;
+}
+
+header .dark-light-mode i {
+  font-size: 15px;
+}
+
+header .dark-light-mode span {
+  font-weight: bold;
+}
+
+/* Header [End] */
+
+
+
+
+
+
+/* Main [Start] */
+
+main {
+  margin-top: 40px;
+}
+
+.search-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 40px;
+}
+
+.search-container .input {
+  background-color: var(--element-background);
+  border-radius: 5px;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  -ms-border-radius: 5px;
+  -o-border-radius: 5px;
+  width: 400px;
+  user-select: none;
+  display: flex;
+  align-items: center;
+}
+
+.search-container .input i {
+  margin-left: 20px;
+  color: var(--text);
+}
+
+.search-container .input input {
+  border: none;
+  outline: none;
+  background-color: var(--element-background);
+  color: var(--text);
+  padding: 15px;
+  width: 100%;
+  font-size: 15px;
+}
+
+.search-container .filter-limitation {
+  border-radius: 5px;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  -ms-border-radius: 5px;
+  -o-border-radius: 5px;
+  user-select: none;
+}
+
+.search-container .filter-limitation input {
+  background-color: var(--element-background);
+  color: var(--text);
+  font-size: 16px;
+  border: none;
+  outline: none;
+  padding: 15px 30px;
+}
+
+.search-container .filter-region {
+  background-color: var(--element-background);
+  padding: 15px;
+  border-radius: 5px;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  -ms-border-radius: 5px;
+  -o-border-radius: 5px;
+  user-select: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 30px;
+  position: relative;
+}
+
+.search-container .filter-region span {
+  font-weight: 600;
+}
+
+.search-container .filter-region i {
+  font-size: 10px;
+  transform: scale(0.8);
+  -webkit-transform: scale(0.8);
+  -moz-transform: scale(0.8);
+  -ms-transform: scale(0.8);
+  -o-transform: scale(0.8);
+}
+
+.search-container .filter-region .list-of-country {
+  display: none;
+  flex-direction: column;
+  font-weight: 600;
+  position: absolute;
+  left: 0;
+  bottom: -180px;
+  background-color: var(--element-background);
+  padding: 15px;
+  width: 170px;
+  border-radius: inherit;
+  -webkit-border-radius: inherit;
+  -moz-border-radius: inherit;
+  -ms-border-radius: inherit;
+  -o-border-radius: inherit;
+  cursor: auto;
+}
+
+.search-container .filter-region .list-of-country li {
+  list-style: none;
+  cursor: pointer;
+}
+
+.search-container .filter-region .list-of-country li:hover {
+  background-color: var(--background);
+}
+
+.search-container .filter-region .list-of-country li:not(:last-child) {
+  padding: 3px;
+}
+
+@media (max-width: 735px) {
+  main .container {
+    width: 288px;
+  }
+}
+
+main .countries {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(288px, 1fr));
+  gap: 70px;
+  margin-top: 40px;
+}
+
+@media (max-width: 735px) {
+  main .countries {
+    gap: 44px;
+  }
+}
+
+@media (max-width: 1132px) and (min-width: 992px) {
+  main .countries {
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  }
+}
+
+@media (max-width: 900px) {
+  main .countries {
+    grid-template-columns: repeat(auto-fill, minmax(288px, 1fr));
+  }
+}
+
+@media (max-width: 735px) {
+  main .countries {
+    grid-template-columns: repeat(auto-fill, minmax(288px, 1fr));
+  }
+}
+
+main .countries .country {
+  width: 100%;
+  background-color: var(--element-background);
+}
+
+main .countries .country .flag {
+  width: 100%;
+  height: 180px;
+  user-select: none;
+}
+
+@media (max-width: 1132px) and (min-width: 992px) {
+  main .countries .country .flag {
+    height: 300px;
+  }
+}
+
+@media (max-width: 992px) and (min-width: 900px) {
+  main .countries .country .flag {
+    height: 230px;
+  }
+}
+
+main .countries .country .content {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 20px;
+  padding-bottom: 40px;
+}
+
+@media (max-width: 1132px) and (min-width: 992px) {
+  main .countries .country .content {
+    gap: 20px;
+  }
+}
+
+main .countries .country .content .name-country {
+  font-size: 18px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  width: fit-content;
+  cursor: pointer;
+  transition: 0.3s;
+  -webkit-transition: 0.3s;
+  -moz-transition: 0.3s;
+  -ms-transition: 0.3s;
+  -o-transition: 0.3s;
+}
+
+main .countries .country .content .name-country:hover {
+  opacity: .8;
+}
+
+@media (max-width: 1132px) and (min-width: 992px) {
+  main .countries .country .content .name-country {
+    margin-top: 20px;
+    margin-bottom: 20px;
+  }
+}
+
+main .countries .country .content .population,
+main .countries .country .content .region,
+main .countries .country .content .capital {
+  font-weight: 800;
+  width: fit-content;
+}
+
+main .countries .country .content .population span,
+main .countries .country .content .region span,
+main .countries .country .content .capital span {
+  font-weight: 600;
+}
+
+/* Main [End] */
