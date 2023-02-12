@@ -13,25 +13,11 @@ body {
 }
 
 :root {
-
   --background: #f7f7f7;
   /*light mode background*/
   --text: #111517;
   /*Light mode text*/
   --element-background: #ffffff;
-
-
-
-
-
-  --background-dark: #202c37;
-  /*Dark mode background*/
-  --light2: #ffffff;
-  /*Dark Mode Text & Light Mode Elements*/
-  --dark-blue: #2b3945;
-  /*Dark mode elements*/
-  --dark-gray: #858585;
-  /*light mode input*/
 }
 
 .container {
