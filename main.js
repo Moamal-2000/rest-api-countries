@@ -187,6 +187,7 @@ function addCountry(data) {
   let flag = document.createElement("img");
   flag.src = data.flags.png;
   flag.classList.add("flag");
+  flag.setAttribute('alt', 'flag country')
   country.append(flag);
 
   // content div

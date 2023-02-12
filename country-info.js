@@ -101,6 +101,7 @@ function addDataToPage(data) {
   let languages = "";
   websiteIconTag.href = dataCountry.flags.png;
   flag.src = dataCountry.flags.png;
+  flag.setAttribute('alt', `${nameCountryLocal} flag`)
 
   countryContent[0].innerHTML = `Native Name: <span>${dataCountry.nativeName}</span>`;
   countryContent[1].innerHTML = `Population: <span>${dataCountry.population}</span>`;
