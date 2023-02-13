@@ -7,19 +7,19 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Countries API</title>
   <!-- Description -->
-  <meta type="description" content="Get information of any country, keycode, name country, border country, currencies, capital country, language country">
+  <meta name="description" content="Get information of any country, keycode, name country, border country, currencies, capital country, language country">
   <!-- Website icon -->
   <link rel="shortcut icon"
-    href="https://img.icons8.com/external-flaticons-flat-flat-icons/64/null/external-countries-digital-nomading-relocation-flaticons-flat-flat-icons.png"
+    href="images/website-icon.png"
     type="image/x-icon">
   <!-- Main css file -->
-  <link rel="stylesheet" href="style.css">
+  <link media="all" rel="stylesheet" href="style.css">
   <!-- Google fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@300;600;800&display=swap" rel="stylesheet">
+  <link disabled media="all" href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@300;600;800&display=swap" rel="stylesheet">
   <!-- Font awesome icons -->
-  <script src="https://kit.fontawesome.com/5a1527845b.js" crossorigin="anonymous"></script>
+  <script async defer src="https://kit.fontawesome.com/5a1527845b.js" crossorigin="anonymous"></script>
 </head>
 
 <body>
@@ -40,9 +40,9 @@
           <input type="text" class="search-input" placeholder="Search for a country">
         </div>
 
-        <div class="filter-limitation">
-          <input type="number" min="1" max="249" placeholder="249" value="249">
-        </div>
+        <label for="filter-limitation-inp" class="filter-limitation">
+          <input id="filter-limitation-inp" type="number" min="1" max="100" value="20">
+        </label>
 
         <div class="filter-region">
           <span>Filter by Region</span>

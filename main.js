@@ -233,7 +233,7 @@ countriesSection.innerHTML = "";
 fetch("data.json")
   .then((res) => res.json())
   .then((data) => {
-    for (let i = 0; i < data.length; i++) addCountry(data[i]);
+    for (let i = 0; i < 20; i++) addCountry(data[i]);
   });
 
 
@@ -291,3 +291,4 @@ searchInp.addEventListener("input", () => {
         countriesSection.appendChild(messageNotFound);
     });
 });
+
