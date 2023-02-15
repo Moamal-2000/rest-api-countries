@@ -75,29 +75,30 @@ filterLimitation.addEventListener("input", () => {
   searchInp.value = "";
   showedCountries = 0;
 
-  fetch("data.json")
-    .then((res) => res.json())
-    .then((data) => {
-      for (let i = 0; i < data.length; i++) {
-        if (
-          selectedRegion.toLowerCase() === "all" &&
-          showCountries !== showedCountries
-        ) {
-          addCountry(data[i]);
-          showedCountries++;
-          continue;
-        }
-
-        if (
-          selectedRegion.toLowerCase() === data[i].region.toLowerCase() &&
-          showCountries !== showedCountries
-        ) {
-          addCountry(data[i]);
-          showedCountries++;
-        }
+  (async function getData() {
+    const res = await fetch('data.json')
+    const data = await res.json()
+    for (let i = 0; i < data.length; i++) {
+      if (
+        selectedRegion.toLowerCase() === "all" &&
+        showCountries !== showedCountries
+      ) {
+        addCountry(data[i]);
+        showedCountries++;
+        continue;
       }
-    });
+
+      if (
+        selectedRegion.toLowerCase() === data[i].region.toLowerCase() &&
+        showCountries !== showedCountries
+      ) {
+        addCountry(data[i]);
+        showedCountries++;
+      }
+    }
+  })();
 });
+
 
 
 
@@ -151,26 +152,25 @@ window.addEventListener("click", (e) => {
     showCountries = parseInt(filterLimitation.value);
     regionClicked = false;
 
-    // Get needed data
-    fetch("data.json")
-      .then((res) => res.json())
-      .then((data) => {
-        for (let i = 0; i < data.length; i++) {
-          let selectedRegion = e.target.textContent.toLowerCase();
-          let region = data[i].region.toLowerCase();
+    (async function getData() {
+      const res = await fetch('data.json')
+      const data = await res.json()
+      for (let i = 0; i < data.length; i++) {
+        let selectedRegion = e.target.textContent.toLowerCase();
+        let region = data[i].region.toLowerCase();
 
-          if (selectedRegion === "all") {
-            addCountry(data[i]);
-            showCountries--;
-            continue;
-          }
-
-          if (selectedRegion === region && showCountries !== 0) {
-            addCountry(data[i]);
-            showCountries--;
-          }
+        if (selectedRegion === "all") {
+          addCountry(data[i]);
+          showCountries--;
+          continue;
         }
-      });
+
+        if (selectedRegion === region && showCountries !== 0) {
+          addCountry(data[i]);
+          showCountries--;
+        }
+      }
+    })();
   }
 });
 
@@ -233,12 +233,12 @@ function addCountry(data) {
 
 
 countriesSection.innerHTML = "";
-fetch("data.json")
-  .then((res) => res.json())
-  .then((data) => {
-    for (let i = 0; i < 20; i++) addCountry(data[i]);
-  });
 
+(async function getData() {
+  const res = await fetch('data.json')
+  const data = await res.json()
+  for (let i = 0; i < 20; i++) addCountry(data[i]);
+})();
 
 
 
@@ -309,9 +309,10 @@ searchInpDeleteBtn.addEventListener('click', () => {
 searchInp.addEventListener("input", () => {
   countriesSection.innerHTML = "";
   showCountries = parseInt(filterLimitation.value);
-  fetch("data.json")
-    .then((res) => res.json())
-    .then((data) => {
+
+  (async function getData() {
+    const res = await fetch('data.json')
+    const data = await res.json()
       // Show specific country
       for (let i = 0; i < data.length; i++) {
         let countryName = data[i].name.toLowerCase();
@@ -325,6 +326,6 @@ searchInp.addEventListener("input", () => {
 
       if (countriesSection.children.length === 0)
         countriesSection.appendChild(messageNotFound);
-    });
+  })();
 });
 

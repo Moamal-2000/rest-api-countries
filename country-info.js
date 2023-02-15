@@ -62,8 +62,6 @@ function darkModeSwitcher() {
     localStorage.setItem('dark-mode-toggle', darkModeToggle)
   }
 }
-
-
 darkMode.addEventListener("click", darkModeSwitcher);
 
 
@@ -73,6 +71,8 @@ darkMode.addEventListener("click", darkModeSwitcher);
 backButton.addEventListener("click", () => {
   location.href = "index.html";
 });
+
+
 let nameCountryLocal = localStorage.getItem("name-country");
 document.querySelector("title").textContent = nameCountryLocal;
 nameCountry.textContent = nameCountryLocal;
@@ -81,11 +81,13 @@ nameCountry.textContent = nameCountryLocal;
 
 
 
-fetch("data.json")
-  .then((res) => res.json()).then((data) => {
-    addDataToPage(data);
-    addBorderCountries(data);
-});
+
+(async function getData() {
+  const res = await fetch('data.json')
+  const data = await res.json()
+  addDataToPage(data);
+  addBorderCountries(data);
+})();
 
 
 
