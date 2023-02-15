@@ -117,6 +117,10 @@ main {
   gap: 40px;
 }
 
+.search-container .input-container {
+  width: 400px;
+}
+
 .search-container .input {
   background-color: var(--element-background);
   border-radius: 5px;
@@ -124,13 +128,22 @@ main {
   -moz-border-radius: 5px;
   -ms-border-radius: 5px;
   -o-border-radius: 5px;
-  width: 400px;
+  width: 250px;
   user-select: none;
   display: flex;
   align-items: center;
+  transition: 0.4s;
+  -webkit-transition: 0.4s;
+  -moz-transition: 0.4s;
+  -ms-transition: 0.4s;
+  -o-transition: 0.4s;
 }
 
-.search-container .input i {
+.search-container .input.active {
+  width: 290px;
+}
+
+.search-container .input .search {
   margin-left: 20px;
   color: var(--text);
 }
@@ -145,6 +158,40 @@ main {
   font-size: 15px;
 }
 
+.search-container .input input::placeholder {
+  transition: 0.2s;
+  -webkit-transition: 0.2s;
+  -moz-transition: 0.2s;
+  -ms-transition: 0.2s;
+  -o-transition: 0.2s;
+}
+
+.search-container .input input:focus::placeholder {
+  color: transparent;
+}
+
+.search-container .input .delete {
+  margin-right: 24px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: 0.3s;
+  -webkit-transition: 0.3s;
+  -moz-transition: 0.3s;
+  -ms-transition: 0.3s;
+  -o-transition: 0.3s;
+  opacity: 0;
+  display: none;
+}
+
+.search-container .input .delete.active {
+  opacity: 1;
+  display: block;
+}
+
+.search-container .input .delete:hover {
+  opacity: 0.5;
+}
+
 .search-container .filter-limitation {
   border-radius: 5px;
   -webkit-border-radius: 5px;
@@ -152,6 +199,7 @@ main {
   -ms-border-radius: 5px;
   -o-border-radius: 5px;
   user-select: none;
+  width: fit-content;
 }
 
 .search-container .filter-limitation input {
@@ -160,7 +208,7 @@ main {
   font-size: 16px;
   border: none;
   outline: none;
-  padding: 15px 30px;
+  padding: 15px 10px;
 }
 
 .search-container .filter-region {
@@ -177,6 +225,7 @@ main {
   align-items: center;
   gap: 30px;
   position: relative;
+  z-index: 20;
 }
 
 .search-container .filter-region span {
@@ -185,29 +234,55 @@ main {
 
 .search-container .filter-region i {
   font-size: 10px;
-  transform: scale(0.8);
-  -webkit-transform: scale(0.8);
-  -moz-transform: scale(0.8);
-  -ms-transform: scale(0.8);
-  -o-transform: scale(0.8);
+  transform: scale(0.8) rotate(-180deg);
+  -webkit-transform: scale(0.8) rotate(-180deg);
+  -moz-transform: scale(0.8) rotate(-180deg);
+  -ms-transform: scale(0.8) rotate(-180deg);
+  -o-transform: scale(0.8) rotate(-180deg);
+  transition: 0.3s;
+  -webkit-transition: 0.3s;
+  -moz-transition: 0.3s;
+  -ms-transition: 0.3s;
+  -o-transition: 0.3s;
+}
+
+.search-container .filter-region i.active {
+  transform: scale(0.8) rotate(0);
+  -webkit-transform: scale(0.8) rotate(0);
+  -moz-transform: scale(0.8) rotate(0);
+  -ms-transform: scale(0.8) rotate(0);
+  -o-transform: scale(0.8) rotate(0);
 }
 
 .search-container .filter-region .list-of-country {
-  display: none;
   flex-direction: column;
   font-weight: 600;
   position: absolute;
   left: 0;
-  bottom: -180px;
   background-color: var(--element-background);
   padding: 15px;
-  width: 170px;
+  width: 175px;
   border-radius: inherit;
   -webkit-border-radius: inherit;
   -moz-border-radius: inherit;
   -ms-border-radius: inherit;
   -o-border-radius: inherit;
   cursor: auto;
+  z-index: -2;
+  transition: 0.3s;
+  -webkit-transition: 0.3s;
+  -moz-transition: 0.3s;
+  -ms-transition: 0.3s;
+  -o-transition: 0.3s;
+  visibility: hidden;
+  bottom: -130px;
+  opacity: 0;
+}
+
+.search-container .filter-region .list-of-country.active {
+  visibility: visible;
+  opacity: 1;
+  bottom: -164px;
 }
 
 .search-container .filter-region .list-of-country li {

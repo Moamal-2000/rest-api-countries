@@ -4,6 +4,7 @@ const darkMode = document.querySelector("header .dark-light-mode"),
   darkModeIconOff = document.createElement("i"),
   darkModeIconOn = document.createElement("i"),
   filter = document.querySelector(".search-container .filter-region"),
+  filterIcon = document.querySelector('.search-container .filter-region i'),
   filterList = document.querySelector(".search-container .filter-region .list-of-country"),
   filterLimitation = document.querySelector(".search-container .filter-limitation input"),
   countriesSection = document.querySelector("main .countries"),
@@ -101,17 +102,18 @@ filterLimitation.addEventListener("input", () => {
 
 
 
-
 let filterToggle = false;
 let regionClicked = false;
 let selectedRegion = "all";
 filter.addEventListener("click", () => {
   if (!filterToggle) {
-    filterList.style.display = "flex";
+    filterList.classList.add('active')
+    filterIcon.classList.add('active')
     filterToggle = !filterToggle;
   } else {
     if (!regionClicked) {
-      filterList.style.display = "none";
+      filterList.classList.remove('active')
+      filterIcon.classList.remove('active')
       filterToggle = !filterToggle;
     }
   }
@@ -128,7 +130,8 @@ window.addEventListener("click", (e) => {
     e.target.className !== "fa-solid fa-angle-down"
   ) {
     if (filterToggle) {
-      filterList.style.display = "none";
+      filterList.classList.remove('active')
+      filterIcon.classList.remove('active')
       filterToggle = !filterToggle;
     }
   }
@@ -269,6 +272,40 @@ messageNotCountry.addEventListener('click', () => {
 
 
 
+const searchInpContainer = document.querySelector('.search-container .input')
+const searchInpDeleteBtn = document.querySelector('.search-container .input .delete')
+searchInpContainer.addEventListener('click', () => {
+  searchInpContainer.classList.add('active')
+  searchInpDeleteBtn.classList.add('active')
+  searchInp.focus()
+})
+
+
+
+
+
+
+window.addEventListener('click', (e) => {
+
+  if (
+    !e.target.classList.contains('search') &&
+    !e.target.classList.contains('delete') &&
+    !e.target.classList.contains('input') &&
+    !e.target.classList.contains('search-input')
+    ) {
+    searchInpContainer.classList.remove('active')
+    searchInpDeleteBtn.classList.remove('active')
+  }
+})
+
+
+
+searchInpDeleteBtn.addEventListener('click', () => {
+  searchInp.value = ''
+})
+
+
+
 searchInp.addEventListener("input", () => {
   countriesSection.innerHTML = "";
   showCountries = parseInt(filterLimitation.value);
@@ -282,9 +319,8 @@ searchInp.addEventListener("input", () => {
         if (countryName.includes(inpText) && showCountries !== 0) {
           addCountry(data[i]);
           showCountries--;
-        } else if (inpText === "israel") {
+        } else if (inpText === "israel")
           countriesSection.appendChild(messageNotCountry);
-        }
       }
 
       if (countriesSection.children.length === 0)
