@@ -83,7 +83,7 @@ nameCountry.textContent = nameCountryLocal;
 
 
 (async function getData() {
-  const res = await fetch('data.json')
+  const res = await fetch('./data/data.json')
   const data = await res.json()
   addDataToPage(data);
   addBorderCountries(data);

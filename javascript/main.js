@@ -23,6 +23,7 @@ let numOfCountries = parseInt(filterLimitation.value),
   filterToggle = false,
   regionClicked = false,
   selectedRegion = "all";
+const countriesPathData = "./data/data.json"
 
 
 
@@ -67,7 +68,7 @@ countriesSection.innerHTML = "";
 
 // Functions
 (async function renderCountriesInThePage() {
-  const res = await fetch("data.json");
+  const res = await fetch(countriesPathData);
   const data = await res.json();
   for (let i = 0; i < numOfCountries; i++) addCountry(data[i]);
 })();
@@ -102,7 +103,7 @@ function darkModeSwitcher() {
 
 async function getFilteredCountries() {
   const isOptionAllCountries = selectedRegion.toLowerCase() === "all";
-  const res = await fetch("data.json");
+  const res = await fetch(countriesPathData);
   const data = await res.json();
 
   for (let i = 0; i < data.length; i++) {
@@ -205,7 +206,7 @@ function handleSearchInput() {
   numOfCountries = parseInt(filterLimitation.value);
 
   (async function getData() {
-    const res = await fetch("data.json");
+    const res = await fetch(countriesPathData);
     const data = await res.json();
     // Show specific country
     for (let i = 0; i < data.length; i++) {
@@ -259,7 +260,7 @@ function handleGeneralClick(e) {
     regionClicked = false;
 
     (async function getData() {
-      const res = await fetch("data.json");
+      const res = await fetch(countriesPathData);
       const data = await res.json();
       for (let i = 0; i < data.length; i++) {
         let selectedRegion = target.textContent.toLowerCase();
@@ -309,7 +310,7 @@ filter.addEventListener("click", () => handleRegionsFilter());
 
 messageNotCountry.addEventListener("click", () => {
   localStorage.setItem("name-country", messageNotCountry.children[0].textContent);
-  location.href = "country-info.html";
+  location.href = "country-info.js";
 });
 
 searchInpContainer.addEventListener("click", () => {
